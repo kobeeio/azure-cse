@@ -78,6 +78,11 @@ cmd.exe /C copy "C:\temp\Guide.url" %USERPROFILE%\Desktop
 '@
 Invoke-Expression -Command:$commandGuide
 
+$commandLicensePage = @'
+cmd.exe /C copy "C:\temp\Request demo license.url" %USERPROFILE%\Desktop
+'@
+Invoke-Expression -Command:$commandLicensePage
+
 
 <#
 --- Register and import the distro
