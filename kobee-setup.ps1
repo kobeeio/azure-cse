@@ -26,6 +26,15 @@ git config --global user.name "gituser"
 
 
 <#
+--- Remove IKAN ALM link from Start Menu (NOTE: should be removed upon new image version!)
+#>
+$commandRemoveAlmLink = @'
+cmd.exe /C del "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\IKAN ALM.lnk"
+'@
+Invoke-Expression -Command:$commandRemoveAlmLink
+
+
+<#
 --- Create shortcuts
 #>
 $Shell = New-Object -ComObject ("WScript.Shell")
@@ -46,13 +55,13 @@ $ShortCutVSCode.WindowStyle = 1
 $ShortCutVSCode.IconLocation = "C:\ide\Microsoft VS Code\Code.exe, 0"
 $ShortCutVSCode.Save()
 
-$ShortCut = $Shell.CreateShortcut("C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Kobee Resource Configurator.lnk")
-$ShortCut.TargetPath = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
-$ShortCut.Arguments = "http://localhost:8082/krc/"
-$ShortCut.WorkingDirectory = "C:\Program Files (x86)\Microsoft\Edge\Application\"
-$ShortCut.WindowStyle = 1
-$ShortCut.IconLocation = "C:\ikan\krc-icon.ico, 0"
-$ShortCut.Save()
+$ShortCutKRC = $Shell.CreateShortcut("C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Kobee Resource Configurator.lnk")
+$ShortCutKRC.TargetPath = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+$ShortCutKRC.Arguments = "http://localhost:8082/krc/"
+$ShortCutKRC.WorkingDirectory = "C:\Program Files (x86)\Microsoft\Edge\Application\"
+$ShortCutKRC.WindowStyle = 1
+$ShortCutKRC.IconLocation = "C:\ikan\krc-icon.ico, 0"
+$ShortCutKRC.Save()
 
 
 <#
@@ -69,7 +78,7 @@ cmd.exe /C copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Visual Stu
 Invoke-Expression -Command:$commandVS
 
 $commandKRC = @'
-cmd.exe /C copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Kobee.lnk" %USERPROFILE%\Desktop
+cmd.exe /C copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Kobee Resource Configurator.lnk" %USERPROFILE%\Desktop
 '@
 Invoke-Expression -Command:$commandKRC
 
