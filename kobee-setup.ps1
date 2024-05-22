@@ -26,15 +26,6 @@ git config --global user.name "gituser"
 
 
 <#
---- Remove IKAN ALM link from Start Menu (NOTE: should be removed upon new image version!)
-#>
-$commandRemoveAlmLink = @'
-cmd.exe /C del "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\IKAN ALM.lnk"
-'@
-Invoke-Expression -Command:$commandRemoveAlmLink
-
-
-<#
 --- Create shortcuts
 #>
 $Shell = New-Object -ComObject ("WScript.Shell")
