@@ -98,3 +98,9 @@ wsl --import $distro $location "C:\temp\Ubuntu-fs.tar"
 --- Disable the first run experience in Edge
 #>
 reg import C:\temp\edge.reg
+
+
+<#
+--- Show license registration page on first run
+#>
+reg import C:\temp\olp_setreg.reg
